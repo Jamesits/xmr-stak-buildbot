@@ -12,7 +12,7 @@ git clone https://github.com/fireice-uk/xmr-stak.git xmr-stak
 Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | Out-File -FilePath xmr-stak/xmrstak/donate-level.hpp -Encoding utf8
 
 # compile
-. "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 -vcvars_ver=14.11
+. "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64 -vcvars_ver=14.11
 . "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\VsMSBuildCmd.bat"
 set CMAKE_PREFIX_PATH="$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\hwloc;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\libmicrohttpd;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl"
 
