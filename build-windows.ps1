@@ -1,5 +1,3 @@
-Set-PSDebug -Trace 1
-
 cd $env:BUILD_SOURCESDIRECTORY
 
 # download dependencies
@@ -9,7 +7,9 @@ Expand-Archive -Path .\xmr-stak-dep.zip -DestinationPath .
 
 # get source
 git clone https://github.com/fireice-uk/xmr-stak.git xmr-stak
-Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | Out-File -FilePath xmr-stak/xmrstak/donate-level.hpp -Encoding utf8
+$DonateLevelDef = Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | Out-File -FilePath  -Encoding utf8
+$Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
+[System.IO.File]::WriteAllLines("xmr-stak/xmrstak/donate-level.hpp", $DonateLevelDef, $Utf8NoBomEncoding)
 
 # compile
 . "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.15063.0 -vcvars_ver=14.11
