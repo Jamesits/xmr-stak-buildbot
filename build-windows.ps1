@@ -14,7 +14,7 @@ Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | O
 # compile
 . "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 -vcvars_ver=14.11
 . "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsMSBuildCmd.bat"
-set CMAKE_PREFIX_PATH=$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\hwloc;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\libmicrohttpd;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl
+set CMAKE_PREFIX_PATH="$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\hwloc;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\libmicrohttpd;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl"
 
 cd $env:BUILD_BINARIESDIRECTORY
 cmake --build $env:BUILD_SOURCESDIRECTORY\xmr-stak --config Release --target install -DXMR-STAK_COMPILE=generic -DCMAKE_LINK_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
