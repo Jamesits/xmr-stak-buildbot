@@ -15,6 +15,7 @@ Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | O
 set CMAKE_PREFIX_PATH="$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\hwloc;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\libmicrohttpd;$env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl"
 
 cd $env:BUILD_BINARIESDIRECTORY
-cmake --build $env:BUILD_SOURCESDIRECTORY\xmr-stak --config Release --target install -- -DXMR-STAK_COMPILE=generic -DCMAKE_LINK_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
+cmake $env:BUILD_SOURCESDIRECTORY\xmr-stak -G "Visual Studio 15 2017 Win64" -T v141,host=x64 -- -DXMR-STAK_COMPILE=generic -DCMAKE_LINK_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
+cmake --build $env:BUILD_SOURCESDIRECTORY\xmr-stak --config Release --target install
 copy $BUILD_BINARIESDIRECTORY\Bin\Release\* $BUILD_ARTIFACTSTAGINGDIRECTORY
 copy $env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl\bin\* $BUILD_ARTIFACTSTAGINGDIRECTORY
