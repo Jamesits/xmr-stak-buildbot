@@ -1,3 +1,5 @@
+Set-PSDebug -Trace 1
+
 cd $env:BUILD_SOURCESDIRECTORY
 
 # download dependencies
