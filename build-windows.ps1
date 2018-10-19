@@ -9,6 +9,7 @@ Expand-Archive -Path .\xmr-stak-dep.zip -DestinationPath .
 git clone https://github.com/fireice-uk/xmr-stak.git xmr-stak
 $DonateLevelDef = Get-Content xmr-stak/xmrstak/donate-level.hpp | %{$_ -replace "2\.0", "0.0"} | Out-File -FilePath  -Encoding utf8
 $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
+[System.Environment]::CurrentDirectory = (Get-Location).Path
 [System.IO.File]::WriteAllLines("xmr-stak/xmrstak/donate-level.hpp", $DonateLevelDef, $Utf8NoBomEncoding)
 
 # compile
