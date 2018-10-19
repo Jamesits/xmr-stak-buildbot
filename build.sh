@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euv
+export DEBIAN_FRONTEND=noninteractive
 
 # install packages
 sudo apt-get update -y
