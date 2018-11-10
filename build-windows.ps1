@@ -23,4 +23,5 @@ Set-Location $env:BUILD_BINARIESDIRECTORY
 # collect artifacts
 Copy-Item $env:BUILD_BINARIESDIRECTORY\Bin\Release\* $env:BUILD_ARTIFACTSTAGINGDIRECTORY
 Copy-Item $env:BUILD_SOURCESDIRECTORY\xmr-stak-dep\openssl\bin\* $env:BUILD_ARTIFACTSTAGINGDIRECTORY
-Compress-Archive -Path "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.exe", "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.dll" -CompressionLevel Optimal -DestinationPath "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\xmr-stak.zip"
+Remove-Item $env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.lib
+# Compress-Archive -Path "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.exe", "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.dll" -CompressionLevel Optimal -DestinationPath "$env:BUILD_ARTIFACTSTAGINGDIRECTORY\xmr-stak.zip"
