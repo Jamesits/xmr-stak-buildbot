@@ -4,6 +4,10 @@ set -euv
 # install dependencies
 # brew may fail because package is already installed
 ! brew install hwloc libmicrohttpd gcc openssl cmake
+# brew may fail on first try but magically work the second time
+# source: https://qiita.com/takuyanin/items/22e689a554643f7650db
+! brew install hwloc libmicrohttpd gcc openssl cmake
+# if they are already installed, we try to upgrade them
 ! brew upgrade hwloc libmicrohttpd gcc openssl cmake
 
 # get source
